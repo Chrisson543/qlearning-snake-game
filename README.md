@@ -1,2 +1,2 @@
 # qlearning-snake-game
-A Snake AI built entirely from scratch, including the Snake game, Q-learning algorithm, and a simple neural network implementation.
+This project is a complete Q-learning implementation for the Snake game, built entirely from scratch in Python. Both the Snake game environment and the neural network used by the agent are custom-coded — no external game engines or ML libraries. The goal is to demonstrate how reinforcement learning can teach an agent to play Snake step by step, starting from random moves and improving through experience.
