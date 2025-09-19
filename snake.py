@@ -14,6 +14,8 @@ class Snake:
         self.brain = NeuralNetwork(11, 8, 3)
         self.brain.load('model.npz')
 
+        self.tail = None
+
         self.score = 0
 
         self.last_move = pygame.time.get_ticks()
@@ -43,11 +45,10 @@ class Snake:
 
         self.body.insert(0, new_head)
 
-        if not grow:
-            self.body.pop()
+        self.tail = self.body.pop()
 
     def eat_and_grow(self):
-        self.body.append(self.food)
+        self.body.append(self.tail)
         self.food = self.place_food()
 
         self.score += 1
@@ -113,8 +114,7 @@ class Snake:
 
         if self.food == head:
             self.score += 1
-            self.food = self.place_food()
-            self.move(grow=True)
+            self.eat_and_grow()
 
     def draw(self, screen):
 
@@ -135,4 +135,5 @@ class Snake:
             self.collision_check()
             self.last_move = pygame.time.get_ticks()
         self.draw(screen)
+
         self.get_state()
